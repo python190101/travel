@@ -6,11 +6,11 @@ from pymysql.cursors import DictCursor
 from logger import api_logger
 
 DB_CONFIG = {
-    'host': 'localhost',
+    'host': '0.0.0.0',
     'port': 3306,
-    'user': 'root',
-    'password': '123456',
-    'db': 'tuniu',
+    'user': 'tnadmin',
+    'password': 'tn6688',
+    'db': 'tn_api_db',
     'charset': 'utf8'
 }
 
