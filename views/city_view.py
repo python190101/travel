@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify
 from dao.city_dao import CityDao
 from flask_restful import Resource, reqparse
 

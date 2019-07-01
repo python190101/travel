@@ -6,7 +6,7 @@ from pymysql.cursors import DictCursor
 from logger import api_logger
 
 DB_CONFIG = {
-    'host': 'localhost',
+    'host': '121.199.63.71',
     'port': 3306,
     'user': 'tnadmin',
     'password': 'tn6688',
@@ -62,8 +62,11 @@ class BaseDao():
     def tn_list(self, table_name,
              *fields, where=None, args=None,
              page=1, page_size=20):
-        pass
-
+        sql = "select * from %s" % table_name
+        with self.db as c:
+            c.execute(sql)
+            items = c.fetchall()
+        return items
 
 
     def count(self, table_name):

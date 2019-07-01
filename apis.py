@@ -1,6 +1,9 @@
 from flask_restful import Api
 
 from views.city_view import *
+from views.country_view import *
+from views.scenic_view import *
+from views.search_view import *
 from views.user_view import *
 
 api = Api()   # 创建Api对象
@@ -12,3 +15,7 @@ def init_api(app):
 api.add_resource(UserLoginResource,"/login/")
 api.add_resource(UserregisterResource,"/register/")
 api.add_resource(CityResource,"/city/")
+api.add_resource(CountryResource,"/country/")
+api.add_resource(ScenicResource,"/scenic/")
+api.add_resource(SearchResource,"/search/")
+

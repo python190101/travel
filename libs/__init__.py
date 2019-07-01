@@ -4,7 +4,7 @@ from redis import Redis
 # 121.199.63.71
 
 
-r = Redis(host="localhost", port=6370,db=1)
+r = Redis(host="121.199.63.71", port=6370,db=1)
 
 def save_token(token, user_id):
     # 保存token

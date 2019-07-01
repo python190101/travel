@@ -27,7 +27,7 @@ class UserLoginResource(Resource):
         args = parser.parse_args()
         p_num = args.get("p_num")
         t = args.get("token","")
-        if r.get(t) == p_num:
+        if check_token(t):
             return jsonify({
                 "code": 207,
                 "msg": "已登录，不要重复登录!",
@@ -78,6 +78,7 @@ class UserregisterResource(Resource):
         else:
             send_msg(p_num)
             return jsonify({
+                "code": 208,
                 "msg":"发送成功！"
             })
 
@@ -113,6 +114,7 @@ class UserPLoginResource(Resource):
         p_num = request.args.get("p_num")
         send_msg(p_num)
         return jsonify({
+            "code":208,
             "msg":"发送成功！"
         })
 
@@ -132,7 +134,7 @@ class UserPLoginResource(Resource):
                 token = str(uuid.uuid4())
                 return jsonify({
                     "code": 201,
-                    "msg": '登录成功！',
+                    "msg": '注册成功！',
                     "token": token,
                     "p_num":p_num
                 })
