@@ -1,15 +1,6 @@
 from flask import jsonify, request
-from libs import *
-from dao.user_dao import UserDao
+from dao.order_dao import OrderDao
 from flask_restful import Resource, reqparse
-from libs.sms import send_msg
 
 
-class DestinationResource(Resource):
-    def get(self):
-        data = ""
-        return jsonify({
-            "code":"",
-            "msg":"",
-            "data":data
-        })
+
