@@ -50,3 +50,15 @@ class CityDao(BaseDao):
                     data.append(item["name"])
                 return data
 
+    def elegant_city(self):
+        dao = BaseDao()
+        city_list = ["当季精选", "海岛精选", "热门目的地"]
+        city_dict = {}
+
+        for i in range(len(city_list)):
+            sql = "select name from cities where is_popular='%s'" % (str(i + 1))
+            with dao.db as c:
+                c.execute(sql)
+                items = c.fetchall()
+                city_dict[city_list[i]] = items
+        return city_dict
