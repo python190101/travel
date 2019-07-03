@@ -12,3 +12,9 @@ class OrderStateDao(BaseDao):
             items = c.fetchall()
             api_logger.info('select %s ok!' % sql)
         return items
+
+    def order_status(self):
+        sql = 'update tn_order set order_status=1'
+
+        items = OrderStateDao.query(sql)
+        return "下单成功"

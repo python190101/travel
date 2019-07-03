@@ -3,6 +3,7 @@ from flask_restful import Api
 from views.city_view import *
 from views.country_view import *
 from views.destination_view import *
+from views.order_status_view import OrderStatusResource
 from views.scenic_detail_view import *
 from views.scenic_view import *
 from views.search_view import *
@@ -25,5 +26,7 @@ api.add_resource(SearchResource,"/search/")
 api.add_resource(UserDetailResource,"/user/detail/")
 api.add_resource(DestinationResource,"/destination/")
 api.add_resource(TravelResource,"/travel/")
-api.add_resource(ScDetailResource,"/scenic/detail/")
+api.add_resource(ScDetailResource,"/scenic/first/")
+api.add_resource(ScDetail,"/scenic/detail/")
+api.add_resource(OrderStatusResource,"/order/status/")
 

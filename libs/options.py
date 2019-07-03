@@ -11,6 +11,6 @@ def getcode(address):
     return  lng,lat
 
 if __name__ == '__main__':
-    address = '上海'
+    address = '北京'
     print(getcode(address))
     print(getcode("上海迪士尼"))
