@@ -11,8 +11,7 @@ class DestinationResource(Resource):
         data = dao.price_list("senic_date_price",scenicid)
         if data:
             return jsonify({
-                "code":8101,
-                "msg":"查询成功！",
+                "code":"查询成功！",
                 "data":data
             })
         else:

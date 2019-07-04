@@ -9,23 +9,28 @@ from libs.sms import send_msg
 
 
 
-class ScDetailResource(Resource):
+class ScenicHomepageResource(Resource):
     def get(self):
+        json = request.get_json()
+        title1 = json['title1']
+        # title2 = json['title2']
+
         dao = ScenicDao()
-        data = dao.s_all()
+        data = dao.scenic_homepage(title1)
         return jsonify({
             "code":1003,
             "msg":"请求成功！",
             "data":data
         })
 
-class ScDetail(Resource):
+class ScenicDetail(Resource):
     def get(self):
-        scenic_id = request.args.get("scenic_id")
+        json = request.get_json()
+        scenics_id = json["scenics_id"]
         dao = ScenicDao()
-        data = dao.s_detail(scenic_id)
+        data = dao.s_detail(scenics_id)
         return jsonify({
-            "code": 1003,
+            "code": 1004,
             "msg": "请求成功！",
             "data": data
         })
