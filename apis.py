@@ -2,6 +2,7 @@ from flask_restful import Api
 
 from views.city_view import *
 from views.country_view import *
+from views.delete_order_view import DeleteOrder
 from views.destination_view import *
 from views.order_status_view import OrderStatusResource, UserOrderCheck
 from views.scenic_detail_view import *
@@ -34,5 +35,6 @@ api.add_resource(OrderStatusResource,"/order/status/")
 api.add_resource(UserOrderStatusAll,"/order/status/all/")
 api.add_resource(UserOrderStatus1,"/order/status/after/")
 api.add_resource(UserOrderStatus2,"/order/status/defore/")
+api.add_resource(DeleteOrder,"/order/delete/")
 
 
