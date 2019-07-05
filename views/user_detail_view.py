@@ -1,6 +1,6 @@
 from flask import jsonify, request, redirect, url_for
 from libs import *
-from dao.user_detail_dao import UserDaoDetail
+from dao.user_detail_dao import UserDetailDao
 from flask_restful import Resource, reqparse
 from libs.sms import send_msg
 
@@ -18,7 +18,7 @@ class UserDetailResource(Resource):
         result = check_token(token)
         if result:
             p_num = json["p_num"]
-            dao = UserDaoDetail()
+            dao = UserDetailDao()
             data = dao.get_c(p_num)
             return  jsonify({
                 "code":701,
@@ -31,16 +31,27 @@ class UserDetailResource(Resource):
 
 
     def post(self):
-        pass    # args = parser.parse_args()
-        # print(args)
-        # img = args.get("img")
-        # user_name = args.get("user_name")
-        # real_name = args.get("real_name")
-        # p_num = args.get("p_num")
-        # birth = args.get("birth")
-        # sex = args.get("sex")
-        # email = args.get("email")
-        # address = args.get("address")
-        # marriage = args.get("marriage")
-        # job = args.get("job")
-        # education = args.get("education")
+        json = request.get_json()
+        token = json.get("token")
+        user_id = r.get(token)
+        # img = json.get("img")
+        user_name = json.get("user_name")
+        real_name = json.get("real_name")
+        birth = json.get("birth")
+        sex = json.get("sex")
+        email = json.get("email")
+        address = json.get("address")
+        marriage = json.get("marriage")
+        job = json.get("job")
+        education = json.get("education")
+        dao = UserDetailDao()
+        dao.save("tn_user",**{"user_name":user_name,
+                              "email":email})
+        dao.save("user_detail",**{"real_name":real_name,
+                                    "birth":birth,"sex":sex,"job":job,
+                                  "address":address,"marriage":marriage,
+                                  "education":education,"user_id":user_id})
+        return  jsonify({
+                "code":702,
+                "msg":"请求成功！"
+            })

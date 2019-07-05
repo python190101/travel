@@ -4,13 +4,14 @@ from views.city_view import *
 from views.country_view import *
 from views.delete_order_view import DeleteOrder
 from views.destination_view import *
-from views.order_status_view import OrderStatusResource, UserOrderCheck
+from views.order_status_view import OrderStatusResource
+from views.user_order_check_view import  UserOrderCheck
 from views.scenic_detail_view import *
 from views.scenic_view import *
 from views.search_view import *
 from views.travel_view import *
 from views.user_detail_view import *
-from views.user_oder_status_view import UserOrderStatusAll, UserOrderStatus1, UserOrderStatus2
+from views.user_order_status_view import UserOrderStatusAll, UserOrderStatus1, UserOrderStatus2
 from views.user_view import *
 
 api = Api()   # 创建Api对象

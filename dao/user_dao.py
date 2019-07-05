@@ -32,9 +32,10 @@ class UserDao(BaseDao):
             c.execute(sql)
             number = c.fetchone()
             return number
+
     def p_num_check(self,user_id):
-        sql = "select p_num from tn_user where user_id='%s'" % user_id
+        sql = "select p_num from tn_user where user_id=%s" % user_id
         with self.db as c:
             c.execute(sql)
-            p_num = c.fetchone()
+            p_num = c.fetchone()[0]["p_num"]
             return p_num
