@@ -7,8 +7,12 @@ class CountryResource(Resource):
 
     def get(self):
         dao = CountryDao()
+        data = []
         try:
-            data = dao.tn_list("countries")
+            countries = dao.tn_list("countries")
+            data.append(countries)
+            cities = dao.type_list(1)
+            data.append(cities)
             return jsonify({
                 "code":8001,
                 "msg":"ok!",
@@ -22,12 +26,11 @@ class CountryResource(Resource):
 
 
     def post(self):
-        coun_code = request.form.get("councode")
+        json = request.get_json()
+        countryid = json.get("countryid")
         dao = CountryDao()
         try:
-            sql = "select name from cities where country_id=(select id from" \
-                  " countries where code=%s) and is_popular=1" % coun_code
-            data = dao.type_list(sql)
+            data = dao.type_list(countryid)
             return jsonify({
                 "code": 8001,
                 "msg": "ok!",

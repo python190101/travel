@@ -1,5 +1,7 @@
 import  requests
 
+
+
 def getcode(address):
     parameters = {'address':address,'key':'CCYbQQuASeGazRVTZGSkPDANEbbwwXEF'}
     a = 'http://api.map.baidu.com/geocoder?output=json&key=f247cdb592eb43ebac6ccd27f796e2d2&address='+str(address)
@@ -11,6 +13,7 @@ def getcode(address):
     return  lng,lat
 
 if __name__ == '__main__':
-    address = '北京'
+    address = '上海'
     print(getcode(address))
     print(getcode("上海迪士尼"))
+

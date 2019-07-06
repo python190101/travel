@@ -18,11 +18,21 @@ class OrderDao(BaseDao):
         return items
 
     def scenic_list(self,table_name,scenicid):
-        sql = "select name from %s where id=%s" % (table_name,scenicid)
+        sql = "select name,city_id from %s where id=%s" % (table_name,scenicid)
         items = OrderDao.baselist(sql)
         return items
 
-    def ticket_list(self):
-        sql = "select start_time,end_time,start_point,end_point from tickets where ticket_type=1"
+    def travel_type(self,lat,lon,scenicid):
+        sql = "SELECT distances(%s,%s, lat, lon) AS dis FROM scenics WHERE id=%s" % (lat,lon,scenicid)
         items = OrderDao.baselist(sql)
         return items
+
+    def order_list(self,order_code):
+        sql = "SELECT id FROM tn_order WHERE code=%s" % order_code
+        order_id = OrderDao.baselist(sql)[0]["id"]
+        return order_id
+
+    def scenic_insert(self,lals,scenicid):
+        sql = "insert into scenic(lat,lon) values(%s,%s) where id=%s" % (lals[1],lals[0],scenicid)
+        OrderDao.baselist(sql)
+        return "OK"

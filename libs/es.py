@@ -71,7 +71,7 @@ def init_index():
                          password='tn6688',
                          db='tn_api_db',charset='utf8')
     with db.cursor(cursor=DictCursor) as c:
-        c.execute('select id, name, img, price,people from scenics')
+        c.execute('select id, name, img, price,people_num from scenics')
 
         es_ = ESearch('tnindex')
         es_.remove_index()

@@ -1,16 +1,13 @@
 from flask import jsonify, request
+from dao.scenic_dao import ScenicDao
+from flask_restful import Resource
 
-from dao.senic_dao import ScenicDao
-from libs import *
-from dao.user_dao import UserDao
-from flask_restful import Resource, reqparse,request
-from libs.sms import send_msg
 
 
 
 
 class ScenicHomepageResource(Resource):
-    def get(self):
+    def post(self):
         json = request.get_json()
         title1 = json['title1']
         title2 = json['title2']
@@ -24,7 +21,7 @@ class ScenicHomepageResource(Resource):
         })
 
 class ScenicDetail(Resource):
-    def get(self):
+    def post(self):
         json = request.get_json()
         scenics_id = json["scenics_id"]
         dao = ScenicDao()

@@ -12,7 +12,7 @@ from libs.sms import send_msg
 
 class UserDetailResource(Resource):
 
-    def get(self):
+    def post(self):
         json = request.get_json()
         token =  json['token']
         result = check_token(token)
@@ -28,8 +28,7 @@ class UserDetailResource(Resource):
         else:
             return redirect(url_for('login'))
 
-
-
+class UserDetailUpdateResource(Resource):
     def post(self):
         json = request.get_json()
         token = json.get("token")

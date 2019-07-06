@@ -20,12 +20,12 @@ class UserOrderCheck(Resource):
             if p_num == num:
                 return jsonify({
                     "code": 1002,
-                    "msg": "请求成功！",
+                    "msg": "请求成功！"
                 })
             else:
                 return jsonify({
                     "code": 1003,
-                    "msg": " 手机号码有误！",
+                    "msg": " 手机号码有误！"
                 })
 
         else:

@@ -75,3 +75,12 @@ class BaseDao():
 
     def make_pwd(self,pwd):
         return hashlib.md5(("&%" + pwd).encode()).hexdigest()
+
+    def query(self, sql, *args):
+        with self.db as c:
+            c.execute(sql, args=args)
+            data = c.fetchall()
+            if data:
+                data = list(data)
+
+        return data

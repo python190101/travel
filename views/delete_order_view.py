@@ -12,5 +12,5 @@ class DeleteOrder(Resource):
         dao.delete_order(p_num)
         return jsonify({
             "code":1020,
-            "msg":"ok~",
+            "msg":"ok~"
         })

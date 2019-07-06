@@ -10,8 +10,9 @@ class CountryDao(BaseDao):
         items = super(CountryDao, self).tn_list(table_name)
         return items
 
-    def type_list(self,sql):
+    def type_list(self,countryid):
         api_logger.info('db insert tn_user: <%s>' % "类型查询")
+        sql = "select * from cities where country_id=%s and is_popular=1" % countryid
         with self.db as c:
             c.execute(sql)
             items = c.fetchall()

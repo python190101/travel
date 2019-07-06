@@ -17,11 +17,11 @@ class OrderStatusResource(Resource):
             data = dao.order_status()
             return jsonify({
                 "code":1005,
-                "msg":"请求成功！",
+                "msg":"请求成功！"
             })
         else:
             return jsonify({
                 "code":1006,
-                "msg":"未支付，请支付！",
+                "msg":"未支付，请支付！"
             })
 

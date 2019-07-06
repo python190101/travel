@@ -31,9 +31,22 @@ class UserDao(BaseDao):
         with self.db as c:
             c.execute(sql)
             number = c.fetchone()
-            return number
+        return number
 
-    def p_num_check(self,user_id):
+    def user_id_list(self,p_num):
+        sql = "select id from tn_user where p_num='%s'" % p_num
+        with self.db as c:
+            c.execute(sql)
+            user_id = c.fetchone()[0]["id"]
+            return user_id
+
+    def update_pwd(self,password):
+        sql = "update tn_user set password=%s" % password
+        with self.db as c:
+            c.execute(sql)
+        api_logger.info('update %s ok!' % sql)
+
+    def p_num_check(self, user_id):
         sql = "select p_num from tn_user where user_id=%s" % user_id
         with self.db as c:
             c.execute(sql)

@@ -5,7 +5,7 @@ from flask_restful import Resource, reqparse
 
 class UserOrderStatusAll(Resource):
 
-    def get(self):
+    def post(self):
         json = request.get_json()
         token = json['token']
         result = check_token(token)
@@ -21,13 +21,12 @@ class UserOrderStatusAll(Resource):
         else:
             return jsonify({
                 "code": 1011,
-                "msg": "请登录",
-
+                "msg": "请登录"
             })
 
 class  UserOrderStatus1(Resource):
 
-    def get(self):
+    def post(self):
         json = request.get_json()
         token = json['token']
         result = check_token(token)
@@ -44,8 +43,7 @@ class  UserOrderStatus1(Resource):
             else:
                  return jsonify({
                     "code": 1013,
-                    "msg": "未下单！",
-
+                    "msg": "未下单！"
                  })
 
 
@@ -57,7 +55,7 @@ class  UserOrderStatus1(Resource):
 
 class  UserOrderStatus2(Resource):
 
-    def get(self):
+    def post(self):
         json = request.get_json()
         token = json['token']
         result = check_token(token)
@@ -73,6 +71,5 @@ class  UserOrderStatus2(Resource):
         else:
             return jsonify({
                 "code": 1016,
-                "msg": "请登录",
-
+                "msg": "请登录"
             })

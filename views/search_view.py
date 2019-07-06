@@ -1,24 +1,36 @@
 from flask import jsonify, request
-from dao.country_dao import CountryDao
-from flask_restful import Resource, reqparse
+from flask_restful import Resource
 
+from dao.scenic_dao import ScenicDao
 from libs.es import ESearch
-from views.country_view import CountryResource
-
-parser = reqparse.RequestParser()
-parser.add_argument('scname',type=str)
 
 
 class SearchResource(Resource):
 
-    def get(self):
-        country = CountryResource()
-        data = country.get()
-        return data
-
     def post(self):
-        args = parser.parse_args()
-        scname = args.get("scname")
+        json = request.get_json()
+        scname = json.get("cityname")
         es = ESearch("tnindex")
         items = es.query(scname)
         return items
+
+
+class SortResource(Resource):
+    def post(self):
+        json = request.get_json()
+        cityid = json["cityid"]
+        scenictype = json["scenictypeid"]
+        code = json["code"]
+        dao = ScenicDao()
+        try:
+            data = dao.scenic_city_list(cityid, scenictype)
+            return jsonify({
+                "code": 8008,
+                "msg": "ok!",
+                "data": data
+            })
+        except:
+            return jsonify({
+                "code": 8009,
+                "msg": "意外错误！"
+            })
